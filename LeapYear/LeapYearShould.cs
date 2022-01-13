@@ -41,10 +41,8 @@ namespace LeapYear
             {
                 return false;
             }
-            else
-            {
-                return true;
-            }
+
+            return true;
         }
     }
 }
