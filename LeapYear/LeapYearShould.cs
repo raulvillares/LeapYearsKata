@@ -35,6 +35,19 @@ namespace LeapYear
 
             Assert.False(result);
         }
+        
+        [Theory]
+        [InlineData(2008)]
+        [InlineData(2012)]
+        [InlineData(2016)]
+        public void ConsiderYearsDivisibleBy4ButNotBy100(int year)
+        {
+            LeapYearChecker leapYearChecker = new();
+
+            var result = leapYearChecker.isLeapYear(year);
+
+            Assert.True(result);
+        }
     }
 
     public class LeapYearChecker
