@@ -37,7 +37,14 @@ namespace LeapYear
     {
         public bool isLeapYear(int year)
         {
-            return true;
+            if ((year % 400) != 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
