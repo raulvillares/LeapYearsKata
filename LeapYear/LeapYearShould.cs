@@ -55,17 +55,22 @@ namespace LeapYear
         public bool isLeapYear(int year)
         {
             
-            if ((year % 4) == 0 && (year % 100) != 0)
+            if (IsYearDivisibleBy(year, 4) && !IsYearDivisibleBy(year, 100))
             {
                 return true;
             }
             
-            if ((year % 400) != 0)
+            if (!IsYearDivisibleBy(year, 400))
             {
                 return false;
             }
 
             return true;
+        }
+
+        private static bool IsYearDivisibleBy(int year, int divisor)
+        {
+            return (year % divisor) == 0;
         }
     }
 }
