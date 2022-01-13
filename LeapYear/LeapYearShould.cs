@@ -25,9 +25,9 @@ namespace LeapYear
 
     public class LeapYearChecker
     {
-        public object isLeapYear(int i)
+        public bool isLeapYear(int i)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }
