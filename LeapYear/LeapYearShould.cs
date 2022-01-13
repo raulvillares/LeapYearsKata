@@ -48,6 +48,19 @@ namespace LeapYear
 
             Assert.True(result);
         }
+        
+        [Theory]
+        [InlineData(2017)]
+        [InlineData(2018)]
+        [InlineData(2019)]
+        public void NotConsiderYearsDivisibleBy4(int year)
+        {
+            LeapYearChecker leapYearChecker = new();
+
+            var result = leapYearChecker.isLeapYear(year);
+
+            Assert.False(result);
+        }
     }
 
     public class LeapYearChecker
