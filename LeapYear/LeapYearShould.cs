@@ -15,9 +15,9 @@ namespace LeapYear
         [Fact]
         public void ConsiderYearsDivisibleBy400()
         {
-            LeapYearChecker leapYearChecker = new();
+            Year year = new Year(2000);
 
-            var result = leapYearChecker.isLeapYear(2000);
+            var result = year.IsLeapYear();
 
             Assert.True(result);
         }
@@ -27,11 +27,11 @@ namespace LeapYear
         [InlineData(1800)]
         [InlineData(1900)]
         [InlineData(2100)]
-        public void NotConsiderYearsDivisibleBy100ButNotBy400(int year)
+        public void NotConsiderYearsDivisibleBy100ButNotBy400(int yearDivisibleBy100ButNotBy400)
         {
-            LeapYearChecker leapYearChecker = new();
+            Year year = new Year(yearDivisibleBy100ButNotBy400);
 
-            var result = leapYearChecker.isLeapYear(year);
+            var result = year.IsLeapYear();
 
             Assert.False(result);
         }
@@ -40,11 +40,11 @@ namespace LeapYear
         [InlineData(2008)]
         [InlineData(2012)]
         [InlineData(2016)]
-        public void ConsiderYearsDivisibleBy4ButNotBy100(int year)
+        public void ConsiderYearsDivisibleBy4ButNotBy100(int yearDivisibleBy4ButNotBy100)
         {
-            LeapYearChecker leapYearChecker = new();
+            Year year = new Year(yearDivisibleBy4ButNotBy100);
 
-            var result = leapYearChecker.isLeapYear(year);
+            var result = year.IsLeapYear();
 
             Assert.True(result);
         }
@@ -53,19 +53,26 @@ namespace LeapYear
         [InlineData(2017)]
         [InlineData(2018)]
         [InlineData(2019)]
-        public void NotConsiderYearsDivisibleBy4(int year)
+        public void NotConsiderYearsDivisibleBy4(int yearDivisibleBy4)
         {
-            LeapYearChecker leapYearChecker = new();
+            Year year = new Year(yearDivisibleBy4);
 
-            var result = leapYearChecker.isLeapYear(year);
+            var result = year.IsLeapYear();
 
             Assert.False(result);
         }
     }
 
-    public class LeapYearChecker
+    public class Year
     {
-        public bool isLeapYear(int year)
+        int year;
+
+        public Year(int year)
+        {
+            this.year = year;
+        }
+
+        public bool IsLeapYear()
         {
             
             if (IsYearDivisibleBy(year, 4) && !IsYearDivisibleBy(year, 100))
