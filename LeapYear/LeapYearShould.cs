@@ -73,12 +73,12 @@ namespace LeapYear
                 return true;
             }
             
-            if (!IsYearDivisibleBy(year, 400))
+            if (IsYearDivisibleBy(year, 400))
             {
-                return false;
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         private static bool IsYearDivisibleBy(int year, int divisor)
