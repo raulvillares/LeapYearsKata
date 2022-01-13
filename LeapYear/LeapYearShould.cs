@@ -22,12 +22,16 @@ namespace LeapYear
             Assert.True(result);
         }
         
-        [Fact]
-        public void NotConsiderYearsDivisibleBy100ButNotBy400()
+        [Theory]
+        [InlineData(1700)]
+        [InlineData(1800)]
+        [InlineData(1900)]
+        [InlineData(2100)]
+        public void NotConsiderYearsDivisibleBy100ButNotBy400(int year)
         {
             LeapYearChecker leapYearChecker = new();
 
-            var result = leapYearChecker.isLeapYear(1700);
+            var result = leapYearChecker.isLeapYear(year);
 
             Assert.False(result);
         }
